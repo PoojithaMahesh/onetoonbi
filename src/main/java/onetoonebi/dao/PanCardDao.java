@@ -1,0 +1,37 @@
+package onetoonebi.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import onetoonebi.dto.PanCard;
+import onetoonebi.dto.Person;
+
+public class PanCardDao {
+	public EntityManager getEntityManager() {
+		return Persistence.createEntityManagerFactory("vinod").createEntityManager();
+	}
+	
+public void savePanCard(int personId, PanCard panCard) {
+	EntityManager entityManager=getEntityManager();
+	Person person=entityManager.find(Person.class, personId);
+	
+	if(person!=null) {
+		EntityTransaction entityTransaction=entityManager.getTransaction();
+		entityTransaction.begin();
+		panCard.setPerson(person);
+		entityManager.persist(panCard);
+//		updating the person details
+		person.setCard(panCard);
+		
+		entityTransaction.commit();
+	}else {
+//		person is not present
+		System.out.println("Sorry that person is not present");
+	}
+	
+	
+	
+}	
+	
+}
