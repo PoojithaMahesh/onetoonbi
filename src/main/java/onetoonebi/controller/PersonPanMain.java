@@ -14,27 +14,29 @@ public class PersonPanMain {
 public static void main(String[] args) {
 	Person person=new Person();
 	person.setId(1);
-	person.setName("Poojitha");
+	person.setName("Pooji");
 	person.setAddress("Mysore");
+	
 	
 	PanCard card=new PanCard();
 	card.setId(101);
-	card.setName("poojithajm");
+	card.setName("poojitha");
 	card.setAge(18);
 	
 	
 	PersonDao personDao=new PersonDao();
 	PanCardDao panCardDao=new PanCardDao();
+//	personDao.savePerson(person);
+//	
+//	panCardDao.savePanCard(1, card);
+//	panCardDao.updatePanCard(101, card);
 	
+//	personDao.updatePerson(1, person);
 	
-	
-	panCardDao.savePanCard(1,card);
-	
-	
-	
-	
-	
-	
+//	personDao.findPersonById(1);
+//	panCardDao.findPanCardById(101);
+//	panCardDao.deletePanCardById(101);
+    personDao.deletePersonById(1);
 	
 	
 	

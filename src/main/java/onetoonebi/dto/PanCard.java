@@ -49,7 +49,7 @@ public class PanCard {
 
 	@Override
 	public String toString() {
-		return "PanCard [id=" + id + ", name=" + name + ", age=" + age + ", person=" + person + "]";
+		return "PanCard [id=" + id + ", name=" + name + "]";
 	}
 	
 }

@@ -22,4 +22,62 @@ public void savePerson(Person person) {
 	entityTransaction.commit();
 }	
 	
+public void updatePerson(int id,Person person) {
+	EntityManager entityManager=getEntityManager();
+	Person dbPerson=entityManager.find(Person.class, id);
+	if(dbPerson!=null) {
+//		person is present then i can update the person details
+		EntityTransaction entityTransaction=entityManager.getTransaction();
+		entityTransaction.begin();
+		person.setId(id);
+		person.setCard(dbPerson.getCard());
+		entityManager.merge(person);
+		entityTransaction.commit();
+	}else {
+		System.out.println("Sorry that id is not present");
+	}
+	
+	
+	
+}
+public void findPersonById(int id) {
+	EntityManager entityManager=getEntityManager();
+	Person dbPerson=entityManager.find(Person.class, id);
+	if(dbPerson!=null) {
+		System.out.println(dbPerson);
+	}else {
+		System.out.println("Sorry that id is not present");
+	}
+	
+}
+
+public void deletePersonById(int id) {
+	EntityManager entityManager=getEntityManager();
+	Person dbPerson=entityManager.find(Person.class, id);
+	if(dbPerson!=null) {
+		EntityTransaction entityTransaction=entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.remove(dbPerson);
+		entityTransaction.commit();
+	}else {
+		System.out.println("Sorry that id is not present");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
